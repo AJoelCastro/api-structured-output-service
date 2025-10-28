@@ -3,6 +3,7 @@ package com.arturocastro.apistructuredoutputservice.controller;
 import com.arturocastro.apistructuredoutputservice.model.SOModel;
 import com.arturocastro.apistructuredoutputservice.service.StructuredOutputService;
 import com.openai.models.responses.Response;
+import com.openai.models.responses.ResponseOutputItem;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +21,8 @@ public class StructuredOutputController {
     }
 
     @PostMapping
-    public ResponseEntity<Response> getStructuredOutput(@RequestBody SOModel som){
-        return ResponseEntity.ok(so.getStructuredOutput(som));
+    public ResponseEntity<ResponseOutputItem> getStructuredOutput(@RequestBody SOModel som){
+        return ResponseEntity.ok(so.getStructuredOutput(som).output().getFirst());
     }
 
 }

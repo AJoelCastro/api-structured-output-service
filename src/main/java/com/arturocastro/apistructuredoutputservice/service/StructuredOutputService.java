@@ -46,6 +46,8 @@ public class StructuredOutputService {
         ResponseCreateParams params = ResponseCreateParams
                 .builder()
                 .model(ChatModel.GPT_4_1_MINI)
+                .maxOutputTokens(som.getMaxTokens())
+                .temperature(som.getTemperature())
                 .input(prompt)
                 .build();
         return client.responses().create(params);
